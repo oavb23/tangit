@@ -9,6 +9,8 @@ index.html          página inicial
 assets/fonts/       Inter Tight e Stack Sans Headline (embutidas localmente)
 assets/img/         logos, ícones e imagens dos projetos
 _headers            cache e cabeçalhos de segurança (Cloudflare Pages)
+_routes.json        diz em quais endereços a função abaixo roda (o resto do site é só arquivo estático)
+functions/[slug].js pré-relatórios: tangit.com.br/<cliente>-relatorio-<6 dígitos> mostra a página do sistema de prospecção
 robots.txt
 ```
 
@@ -28,3 +30,9 @@ Cada `git push` na branch principal publica automaticamente.
 
 Arquivos em `assets/` ficam em cache por 1 ano. Ao trocar uma imagem, **mude o nome do arquivo**
 (ex.: `privilege-moveis-decoracoes-v2.jpg`) e atualize a referência no `index.html`.
+
+## Pré-relatórios
+
+`functions/[slug].js` atende só endereços no formato `<cliente>-relatorio-<6 dígitos>` e busca a página em
+`https://prospeccao-tangit.pages.dev/api/public/relatorio/<endereço>`. Se o sistema mudar de endereço,
+crie a variável `SISTEMA_URL` no projeto (Settings → Variables and Secrets).
